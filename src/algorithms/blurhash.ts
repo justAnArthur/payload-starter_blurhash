@@ -23,11 +23,16 @@ export const imageToBlurhash = async (
     .raw()
     .toBuffer();
 
-  return encode(
+  const hash = encode(
     new Uint8ClampedArray(rawPixels),
     width,
     height,
     componentX,
     componentY,
   );
+
+  return ({
+    hash,
+    dataUrl: null
+  })
 };

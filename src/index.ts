@@ -34,7 +34,7 @@ const computeBlurhash = (pluginOptions?: BlurhashPluginOptions) => {
     algorithm = defaultAlgorithm,
     showBlurhashField = false,
     ...options
-  } = pluginOptions ?? {};
+  } = pluginOptions ?? {} as BlurhashPluginOptions;
 
   const mimeTypeMatcher = new Minimatch(mimeTypePattern);
 
@@ -54,11 +54,12 @@ const computeBlurhash = (pluginOptions?: BlurhashPluginOptions) => {
         return data;
       }
 
-      const blurhash = await runAlgorithm(algorithm, fileData, options);
+      const { hash, dataUrl } = await runAlgorithm(algorithm, fileData, options);
 
       return {
         ...data,
-        blurhash,
+        [`${algorithm}Hash`]: hash,
+        [`${algorithm}DataUrl`]: dataUrl
       };
     };
 
@@ -79,7 +80,14 @@ const computeBlurhash = (pluginOptions?: BlurhashPluginOptions) => {
             fields: [
               ...collection.fields,
               {
-                name: 'blurhash',
+                name: `${algorithm}Hash`,
+                type: 'text',
+                admin: {
+                  hidden: !showBlurhashField,
+                },
+              },
+              {
+                name: `${algorithm}DataUrl`,
                 type: 'text',
                 admin: {
                   hidden: !showBlurhashField,

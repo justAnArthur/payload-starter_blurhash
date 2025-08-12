@@ -6,7 +6,7 @@ import { Equal, ExpectTrue } from '../types';
 export type Algorithm = (
   data: Buffer,
   options: Record<string, unknown>,
-) => Promise<string>;
+) => Promise<{ hash: string; dataUrl: string | null }>;
 
 type ExtractAlgorithmOptions<T extends Algorithm> = Parameters<T>[1];
 

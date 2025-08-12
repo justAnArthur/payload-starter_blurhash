@@ -1,6 +1,6 @@
 import { z } from 'zod';
 import sharp from 'sharp';
-import { rgbaToThumbHash } from 'thumbhash';
+import { rgbaToThumbHash, thumbHashToDataURL } from 'thumbhash';
 
 export const ThumbhashOptionsSchema = z.object({});
 
@@ -27,9 +27,14 @@ export const imageToThumbhash = async (
     .raw()
     .toBuffer();
 
-  const thumbhash = Buffer.from(
-    rgbaToThumbHash(newWidth, newHeight, rawPixels),
-  );
+  const binaryThumbhash = rgbaToThumbHash(newWidth, newHeight, rawPixels);
 
-  return thumbhash.toString('base64');
+  const thumbHashToBase64 = Buffer.from(binaryThumbhash).toString('base64');
+
+  const placeholderURL = thumbHashToDataURL(binaryThumbhash);
+
+  return ({
+    hash: thumbHashToBase64,
+    dataUrl: placeholderURL
+  })
 };
