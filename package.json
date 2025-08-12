@@ -1,17 +1,22 @@
 {
   "name": "payload-blurhash-plugin",
-  "version": "3.2.0",
+  "version": "3.2.1",
   "description": "Payload CMS plugin for automatic Blurhash encoding of images",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "type": "module",
-  "private": true,
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/invakid404/payload-blurhash-plugin.git"
+    "url": "git@github.com:justAnArthur/payload-starter_blurhash.git"
   },
   "author": "Tsvetomir Bonev <invakid404@riseup.net>",
   "license": "Unlicense",
+  "contributors": [
+    {
+      "name": "Artur Kozubov",
+      "url": "https://github.com/justAnArthur"
+    }
+  ],
   "scripts": {
     "build": "node build.js",
     "format": "prettier --write \"src/**/*.ts\"",
