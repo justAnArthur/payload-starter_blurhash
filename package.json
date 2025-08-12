@@ -1,13 +1,13 @@
 {
-  "name": "payload-blurhash-plugin",
-  "version": "3.2.1",
-  "description": "Payload CMS plugin for automatic Blurhash encoding of images",
+  "name": "@justanarthur/payload-imagehash-plugin",
+  "version": "3.2.2",
+  "description": "Payload CMS plugin for automatic Blurhash/Thumbhash encoding of images",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "type": "module",
   "repository": {
     "type": "git",
-    "url": "git@github.com:justAnArthur/payload-starter_blurhash.git"
+    "url": "git@github.com:justAnArthur/payload-starter_imagehash.git"
   },
   "author": "Tsvetomir Bonev <invakid404@riseup.net>",
   "license": "Unlicense",
